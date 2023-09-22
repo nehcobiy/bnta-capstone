@@ -18,13 +18,13 @@ public class Product {
     private String name;
 
     @Column
-    private Long price;
+    private int price;
 
-    @Column
+    @Column(length = 1024) //length is number of characters
     private String description;
 
     @Column
-    private Long stock;
+    private int stock;
 
     @Column
     private String image;
@@ -38,7 +38,7 @@ public class Product {
 
     public Product() {}
 
-    public Product(String name, Long price, String description, Long stock, String image, Category category) {
+    public Product(String name, int price, String description, int stock, String image, Category category) {
         this.name = name;
         this.price = price;
         this.description = description;
@@ -64,11 +64,11 @@ public class Product {
         this.name = name;
     }
 
-    public Long getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -80,11 +80,11 @@ public class Product {
         this.description = description;
     }
 
-    public Long getStock() {
+    public int getStock() {
         return stock;
     }
 
-    public void setStock(Long stock) {
+    public void setStock(int stock) {
         this.stock = stock;
     }
 

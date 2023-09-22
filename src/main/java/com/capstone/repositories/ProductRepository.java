@@ -1,4 +1,10 @@
 package com.capstone.repositories;
 
-public interface ProductRepository {
+import com.capstone.models.Order;
+import com.capstone.models.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long>  {
 }
