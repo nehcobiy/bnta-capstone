@@ -18,4 +18,18 @@ public enum Category {
         return displayCategoryName;
     }
 
+    public static Category findByName(String name){
+
+        Category result = null;
+
+        for (Category category : values()){
+            if (category.name().equalsIgnoreCase(name)){
+                result = category;
+                break;
+            }
+        }
+        return result;
+    }
 }
+
+
