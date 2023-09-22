@@ -1,5 +1,6 @@
 package com.capstone.services;
 
+import com.capstone.models.Category;
 import com.capstone.models.Product;
 import com.capstone.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,21 @@ public class ProductService {
 
     public Optional<Product> findProductById(Long id){
         return productRepository.findById(id);
+    }
+
+    public List<Product> findProducts(String category){
+
+        Category foundCategory = Category.findByName(category);
+
+        List<Product> foundProducts = productRepository.findAll();
+
+        if (category != null) {
+            foundProducts = productRepository.findByCategory(foundCategory);
+        }
+
+        return foundProducts;
+
+
     }
 
 
