@@ -1,6 +1,7 @@
 package com.capstone.controllers;
 
 import com.capstone.models.Customer;
+import com.capstone.models.Product;
 import com.capstone.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,10 +26,18 @@ public class CustomerController {
 
     // GET - SHOW
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Optional<Customer>> getCustomerById(@PathVariable Long id){
-        Customer foundCustomer = customerService.findCustomer(id);
-        return new ResponseEntity(foundCustomer, HttpStatus.OK);
+    public ResponseEntity<Optional<Customer>> getCustomerById(@PathVariable Long id) {
+        Optional<Customer> foundCustomer = customerService.findCustomerById(id);
+
+        if (foundCustomer.isPresent()) {
+            return new ResponseEntity<>(foundCustomer, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        }
+
     }
+
+
 
     // POST - CREATE
     @PostMapping
