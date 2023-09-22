@@ -18,7 +18,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    // GET - INDEX
+     //GET - INDEX
     @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomers(){
         return new ResponseEntity<>(customerService.findAllCustomers(), HttpStatus.OK);
