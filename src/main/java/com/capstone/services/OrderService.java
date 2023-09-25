@@ -50,4 +50,18 @@ public class OrderService {
         return orderRepository.findById(id);
     }
 
+    public List<Order> findOrders(Long customerId){
+
+        List<Order> foundOrders = orderRepository.findAll();
+
+        if (customerId != null) {
+            foundOrders = orderRepository.findByCustomerId(customerId);
+        }
+
+        return foundOrders;
+
+
+
+    }
+
 }
