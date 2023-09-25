@@ -13,12 +13,12 @@ public class OrderProduct {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonIgnoreProperties({"orders_products"})
+    @JsonIgnoreProperties({"orders"})
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    @JsonIgnoreProperties({"orders_products"})
+    @JsonIgnoreProperties({"products"})
     private Product product;
 
     @Column
