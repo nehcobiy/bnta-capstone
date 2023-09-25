@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -43,6 +44,10 @@ public class OrderService {
 
     public List<Order> findAllOrders(){
         return orderRepository.findAll();
+    }
+
+    public Optional<Order> findOrderById(Long id){
+        return orderRepository.findById(id);
     }
 
 }
