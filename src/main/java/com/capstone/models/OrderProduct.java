@@ -1,6 +1,7 @@
 package com.capstone.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,12 +14,12 @@ public class OrderProduct {
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonIgnoreProperties({"orders"})
+    @JsonIgnoreProperties({"orderProducts"})
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    @JsonIgnoreProperties({"products"})
+    @JsonIgnoreProperties({"orderProducts"})
     private Product product;
 
     @Column

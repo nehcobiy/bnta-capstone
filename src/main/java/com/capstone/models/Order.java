@@ -54,4 +54,8 @@ public class Order {
     public void setOrderProducts(List<OrderProduct> orderProducts) {
         this.orderProducts = orderProducts;
     }
+
+    public void addOrderProduct(OrderProduct orderProduct){
+        this.orderProducts.add(orderProduct);
+    }
 }

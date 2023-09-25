@@ -6,11 +6,11 @@ public class OrderDTO {
 
     private Long customerId;
 
-    private HashMap<String, Long> products;
+    private HashMap<Long, Integer> products;
 
     public OrderDTO() {}
 
-    public OrderDTO(Long customerId, HashMap<String, Long> products) {
+    public OrderDTO(Long customerId, HashMap<Long, Integer> products) {
         this.customerId = customerId;
         this.products = products;
     }
@@ -23,11 +23,11 @@ public class OrderDTO {
         this.customerId = customerId;
     }
 
-    public HashMap<String, Long> getProducts() {
+    public HashMap<Long, Integer> getProducts() {
         return products;
     }
 
-    public void setProducts(HashMap<String, Long> products) {
+    public void setProducts(HashMap<Long, Integer> products) {
         this.products = products;
     }
 }
