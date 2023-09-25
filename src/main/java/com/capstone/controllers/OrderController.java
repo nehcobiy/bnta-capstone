@@ -26,8 +26,8 @@ public class OrderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAllOrders(){
-        List<Order> orders = orderService.findAllOrders();
+    public ResponseEntity<List<Order>> getOrders(@RequestParam(required = false, name = "customerId") Long customerId){
+        List<Order> orders = orderService.findOrders(customerId);
         return new ResponseEntity<>(orders, HttpStatus.OK);
     }
 
@@ -42,6 +42,8 @@ public class OrderController {
         }
 
     }
+
+
 
 
 }
