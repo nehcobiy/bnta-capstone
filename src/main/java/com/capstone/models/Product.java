@@ -1,5 +1,6 @@
 package com.capstone.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
@@ -32,6 +33,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     private Category category;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "product")
     @JsonIgnoreProperties({"product"})
     private List<OrderProduct> orderProducts;
