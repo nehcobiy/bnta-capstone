@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("products")
@@ -40,6 +42,23 @@ public class ProductController {
     public ResponseEntity<Product> createProduct(@RequestBody Product product){
         Product createdProduct = productService.saveProduct(product);
         return new ResponseEntity<>(createdProduct, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = "/random/{count}")
+    public ResponseEntity<List<Product>> getRandomProducts(@PathVariable int count) {
+        List<Product> allProducts = productService.findAllProducts(); // Assuming you have a method to get all products
+
+        if (count >= allProducts.size()) {
+            return new ResponseEntity<>(allProducts, HttpStatus.OK);
+        } else {
+            Random random = new Random();
+            List<Product> randomProducts = random
+                    .ints(count, 0, allProducts.size())
+                    .mapToObj(allProducts::get)
+                    .collect(Collectors.toList());
+
+            return new ResponseEntity<>(randomProducts, HttpStatus.OK);
+        }
     }
 
 
