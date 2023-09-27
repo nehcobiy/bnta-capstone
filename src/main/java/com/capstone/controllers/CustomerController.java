@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -48,17 +49,15 @@ public class CustomerController {
         return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
     }
 
-    @PostMapping(value="/verification")
-    public ResponseEntity<Customer> verifyCustomer(@RequestBody CustomerDTO customerDTO){
+    @PostMapping("/verification")
+    public ResponseEntity<Customer> verifyCustomer(@RequestBody CustomerDTO customerDTO) {
 
         Customer verifedCustomer = customerService.verify(customerDTO);
 
-
-        if (verifedCustomer != null){
-            return  new ResponseEntity<>(verifedCustomer, HttpStatus.FOUND);
+        if (verifedCustomer != null) {
+            return ResponseEntity.ok(verifedCustomer);
         } else {
-            return  new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
     }
-
 }
