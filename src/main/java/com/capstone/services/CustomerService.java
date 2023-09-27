@@ -1,6 +1,7 @@
 package com.capstone.services;
 
 import com.capstone.models.Customer;
+import com.capstone.models.CustomerDTO;
 import com.capstone.repositories.CustomerRepository;
 import com.capstone.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +29,17 @@ public class CustomerService {
 
     public Customer saveCustomer(Customer customer){
        return customerRepository.save(customer);
+    }
+
+    public Customer verify(CustomerDTO customerDTO){
+
+        Customer verifiedCustomer = customerRepository.findByEmail(customerDTO.getEmail());
+
+      if (verifiedCustomer != null && verifiedCustomer.getPassword().equals(customerDTO.getPassword()) ) {
+          return verifiedCustomer;
+      } else {
+          return null;
+      }
+
     }
 }
